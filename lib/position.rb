@@ -12,7 +12,7 @@ class Position
   attr_reader :array_notation, :chess_notation
 
   def initialize(array_notation, chess_notation)
-    @array_notation = array_notation
+    @array_notation = array_notation.dup.freeze
     @chess_notation = chess_notation
   end
 
