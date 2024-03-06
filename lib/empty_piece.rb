@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'universal_default_board'
+
 ##
 # This represents an empty Chess piece.
 # This is mostly an abstract class, the real pieces will
@@ -9,7 +11,7 @@ class EmptyPiece
   attr_accessor :current_position
   attr_reader :board, :move_counter
 
-  @@default_board = nil
+  extend UniversalDefaultBoard
 
   EMPTY = new
   WHITE = 'white'
@@ -17,7 +19,7 @@ class EmptyPiece
   WHITE_FONT_COLOR = "\e[37m"
   BLACK_FONT_COLOR = "\e[30m"
 
-  def initialize(board = @@default_board)
+  def initialize(board = default_board)
     self.board = board
     self.current_position = nil
     self.move_counter = 0
