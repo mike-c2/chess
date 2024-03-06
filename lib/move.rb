@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'position'
+require_relative 'universal_default_board'
 
 ##
 # This represents a move in Chess.
@@ -15,7 +16,7 @@ require_relative 'position'
 class Move
   attr_reader :positions, :board
 
-  @@default_board = nil
+  extend UniversalDefaultBoard
 
   def initialize(positions, board)
     @positions = positions
@@ -29,15 +30,7 @@ class Move
   private_class_method :new
 
   class << self
-    def default_board=(board)
-      @@default_board = board
-    end
-
-    def default_board
-      @@default_board
-    end
-
-    def create(positions, board = @@default_board)
+    def create(positions, board = default_board)
       return nil unless positions in [Position, Position]
 
       return nil if positions.first == positions.last
