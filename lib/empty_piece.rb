@@ -9,7 +9,7 @@ require_relative 'universal_default_board'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :current_position
-  attr_reader :board, :move_counter
+  attr_reader :board, :move_count
 
   extend UniversalDefaultBoard
 
@@ -20,12 +20,14 @@ class EmptyPiece
   BLACK_FONT_COLOR = "\e[30m"
 
   def initialize(board = default_board)
-    self.board = board
-    self.current_position = nil
-    self.move_counter = 0
+    @board = board
+    @move_count = 0
+    @current_position = nil
   end
 
-  def increment_counter; end
+  def increment_move_count
+    @move_count += 1
+  end
 
   # These methods will be more defined in the subclasses
   def generate_possible_moves
