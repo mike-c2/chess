@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'universal_default_board'
+require_relative 'color'
 
 ##
 # This represents an empty Chess piece.
@@ -12,12 +13,9 @@ class EmptyPiece
   attr_reader :board, :move_count
 
   extend UniversalDefaultBoard
+  include Color
 
   EMPTY = new
-  WHITE = 'white'
-  BLACK = 'black'
-  WHITE_FONT_COLOR = "\e[37m"
-  BLACK_FONT_COLOR = "\e[30m"
 
   def initialize(board = default_board)
     @board = board
@@ -35,14 +33,6 @@ class EmptyPiece
   end
 
   def check?
-    false
-  end
-
-  def same_color?(_other)
-    false
-  end
-
-  def opponents_color?(_other)
     false
   end
 
