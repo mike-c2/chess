@@ -3,7 +3,7 @@
 require_relative 'color'
 
 ##
-# This will add the color Black to a chess piece.
+# This will add the color Black to an object.
 module Black
   include Color
 

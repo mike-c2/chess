@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 ##
-# This will implement color to a chess piece.
+# This will implement color to an object.
 # This module actually has no color, the
 # child modules will define their own colors.
 #
-# Chess pieces can be either white or black.
+# Objects can be either white or black.
 module Color
   BLACK = 'black'
   WHITE = 'white'
