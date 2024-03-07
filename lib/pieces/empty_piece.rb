@@ -2,6 +2,7 @@
 
 require_relative '../universal_default_board'
 require_relative 'colors/color'
+require_relative 'piece_offsets'
 
 ##
 # This represents an empty Chess piece.
@@ -10,15 +11,17 @@ require_relative 'colors/color'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :current_position
-  attr_reader :board, :move_count, :piece_type
+  attr_reader :board, :move_count, :piece_type, :offsets
 
   extend UniversalDefaultBoard
   include Color
+  include PieceOffsets
 
   def initialize(board = self.class.default_board)
     @board = board
     @move_count = 0
     @current_position = nil
+    @offsets = []
   end
 
   def increment_move_count
