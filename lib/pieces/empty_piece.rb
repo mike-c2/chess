@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'universal_default_board'
-require_relative 'color'
+require_relative '../universal_default_board'
+require_relative 'colors/color'
 
 ##
 # This represents an empty Chess piece.

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/white'
+require_relative '../../../../lib/pieces/colors/white'
 
 describe White do
   subject(:white_object) { white_class.new }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/empty_piece'
+require_relative '../../../lib/pieces/empty_piece'
 
 describe EmptyPiece do
   subject(:piece) { described_class.new(board) }
