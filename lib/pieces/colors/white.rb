@@ -20,6 +20,14 @@ module White
   end
 
   def opponents_side?(other)
-    other.color == BLACK
+    other.black?
+  end
+
+  def black?
+    false
+  end
+
+  def white?
+    true
   end
 end

@@ -49,7 +49,7 @@ describe White do
 
     context 'when the other object is neither white nor black' do
       before do
-        allow(other).to receive(:color).and_return('none')
+        allow(other).to receive(:black?).and_return(false)
       end
 
       it 'returns false' do
@@ -59,7 +59,7 @@ describe White do
 
     context 'when the other object is white' do
       before do
-        allow(other).to receive(:color).and_return('white')
+        allow(other).to receive(:black?).and_return(false)
       end
 
       it 'returns false' do
@@ -69,12 +69,24 @@ describe White do
 
     context 'when the other object is black' do
       before do
-        allow(other).to receive(:color).and_return('black')
+        allow(other).to receive(:black?).and_return(true)
       end
 
       it 'returns true' do
         is_expected.to be_opponents_side(other)
       end
+    end
+  end
+
+  describe '#black?' do
+  it 'only returns false' do
+    is_expected.not_to be_black
+  end
+  end
+
+  describe '#white?' do
+    it 'only returns true' do
+      is_expected.to be_white
     end
   end
 end
