@@ -9,7 +9,7 @@ require_relative 'empty_piece'
 class King < EmptyPiece
   def initialize(board = self.class.default_board)
     super
-    @piece_type = 'king'
+    self.piece_type = 'king'
     @offsets = KING_OFFSETS
   end
 end

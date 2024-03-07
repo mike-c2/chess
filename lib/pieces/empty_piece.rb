@@ -38,13 +38,18 @@ class EmptyPiece
   end
 
   # How the piece actually looks on the board
+  # that is printed to the terminal
   def piece_str
-    ''
+    "#{font_color}#{piece_type.to_s.capitalize}"
   end
 
   # For child classes, this would be the color and
   # piece_type, i.e. 'white king'
   def to_s
-    ''
+    "#{color} #{piece_type}".strip
   end
+
+  private
+
+  attr_writer :piece_type
 end
