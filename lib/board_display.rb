@@ -7,9 +7,6 @@
 class BoardDisplay
   attr_reader :chess_board, :bg_colors
 
-  BLACK_FONT_COLOR = "\e[30m"
-  WHITE_FONT_COLOR = "\e[37m"
-
   BLACK_BG_COLOR = "\e[40m"
   RED_BG_COLOR = "\e[41m"
   GREEN_BG_COLOR = "\e[42m"
