@@ -38,4 +38,10 @@ class EmptyPiece
   def piece_str
     ''
   end
+
+  # For child classes, this would be the color and
+  # piece_type, i.e. 'white king'
+  def to_s
+    ''
+  end
 end
