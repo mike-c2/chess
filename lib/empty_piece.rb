@@ -15,8 +15,6 @@ class EmptyPiece
   extend UniversalDefaultBoard
   include Color
 
-  EMPTY = new
-
   def initialize(board = default_board)
     @board = board
     @move_count = 0
