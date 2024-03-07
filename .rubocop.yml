@@ -5,3 +5,9 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - "spec/*/*"
+Metrics/MethodLength:
+  Exclude:
+    - "lib/game_info.rb"
+Style/ClassVars:
+  Exclude:
+    - "lib/universal_default_board.rb"
