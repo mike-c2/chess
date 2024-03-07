@@ -10,7 +10,7 @@ require_relative 'colors/color'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :current_position
-  attr_reader :board, :move_count
+  attr_reader :board, :move_count, :piece_type
 
   extend UniversalDefaultBoard
   include Color
