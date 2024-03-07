@@ -7,9 +7,9 @@ describe Color do
   let(:colored_class) { Class.new { include Color } }
 
   describe '#color' do
-    it "only returns 'none'" do
+    it 'only returns empty string' do
       result = colored_object.color
-      expect(result).to eq('none')
+      expect(result).to eq('')
     end
   end
 
@@ -29,6 +29,18 @@ describe Color do
   describe '#opponents_side?' do
     it 'only returns false' do
       is_expected.not_to be_opponents_side(colored_object)
+    end
+  end
+
+  describe '#black?' do
+    it 'only returns false' do
+      is_expected.not_to be_black
+    end
+  end
+
+  describe '#white?' do
+    it 'only returns false' do
+      is_expected.not_to be_white
     end
   end
 end

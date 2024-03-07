@@ -9,16 +9,17 @@
 module Color
   BLACK = 'black'
   WHITE = 'white'
-  NO_COLOR = 'none'
+  NO_COLOR = ''
   WHITE_FONT_COLOR = "\e[37m"
   BLACK_FONT_COLOR = "\e[30m"
+  NO_FONT_COLOR = ''
 
   def color
     NO_COLOR
   end
 
   def font_color
-    ''
+    NO_FONT_COLOR
   end
 
   def same_side?(_other)
@@ -26,6 +27,14 @@ module Color
   end
 
   def opponents_side?(_other)
+    false
+  end
+
+  def black?
+    false
+  end
+
+  def white?
     false
   end
 end
