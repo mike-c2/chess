@@ -40,7 +40,7 @@ class EmptyPiece
   # How the piece actually looks on the board
   # that is printed to the terminal
   def piece_str
-    "#{font_color}#{piece_type.to_s.capitalize}"
+    piece_type.to_s.capitalize
   end
 
   # For child classes, this would be the color and
