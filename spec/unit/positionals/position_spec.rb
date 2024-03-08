@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/position'
+require_relative '../../../lib/positionals/position'
 
 describe Position do
   # new is private, must use factory method to get new Position object

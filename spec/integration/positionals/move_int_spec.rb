@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/move'
+require_relative '../../../lib/positionals/move'
 
 describe Move do
   # new is private, must use factory method to get new Move object
