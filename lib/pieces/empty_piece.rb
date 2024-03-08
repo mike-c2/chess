@@ -17,10 +17,10 @@ class EmptyPiece
   include Color
   include PieceOffsets
 
-  def initialize(board = self.class.default_board)
+  def initialize(position = nil, board = self.class.default_board)
     @board = board
     @move_count = 0
-    @position = nil
+    @position = position
     @offsets = []
   end
 

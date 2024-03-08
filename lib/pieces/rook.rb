@@ -7,7 +7,7 @@ require_relative 'empty_piece'
 # This is an abstract class, with
 # no color.
 class Rook < EmptyPiece
-  def initialize(board = self.class.default_board)
+  def initialize(position = nil, board = self.class.default_board)
     super
     self.piece_type = 'rook'
     @offsets = ROOK_OFFSETS
