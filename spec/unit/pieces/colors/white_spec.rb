@@ -79,9 +79,9 @@ describe White do
   end
 
   describe '#black?' do
-  it 'only returns false' do
-    is_expected.not_to be_black
-  end
+    it 'only returns false' do
+      is_expected.not_to be_black
+    end
   end
 
   describe '#white?' do
