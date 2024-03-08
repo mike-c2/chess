@@ -33,7 +33,9 @@ class BoardDisplay
     chess_board.reverse.each_with_index do |row, index|
       @bg_colors = [bg_colors.last, bg_colors.first]
 
-      board_string = "#{board_string}#{board_row(row, index + 1)}"
+      row_label = chess_board.length - index
+
+      board_string = "#{board_string}#{board_row(row, row_label)}"
     end
 
     "#{board_string}#{column_labels}\n"
