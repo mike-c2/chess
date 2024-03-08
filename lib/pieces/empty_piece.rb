@@ -10,7 +10,7 @@ require_relative 'piece_offsets'
 # inherit from this. An object of this class will be used
 # to represent an empty space on the board.
 class EmptyPiece
-  attr_accessor :current_position
+  attr_accessor :position
   attr_reader :board, :move_count, :piece_type, :offsets
 
   extend UniversalDefaultBoard
@@ -20,7 +20,7 @@ class EmptyPiece
   def initialize(board = self.class.default_board)
     @board = board
     @move_count = 0
-    @current_position = nil
+    @position = nil
     @offsets = []
   end
 
