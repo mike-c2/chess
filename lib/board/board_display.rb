@@ -61,8 +61,10 @@ class BoardDisplay
 
     chess_row.each_with_index do |piece, index|
       current_color = index.even? ? bg_colors.first : bg_colors.last
-      piece_formatted = piece.piece_str.center(7)
-      row_string = "#{row_string}#{current_color}#{piece.font_color}#{piece_formatted}#{NO_COLOR}"
+
+      formatted_piece = "#{piece.font_color}#{piece.piece_str.center(7)}"
+
+      row_string = "#{row_string}#{current_color}#{formatted_piece}#{NO_COLOR}"
     end
 
     "#{row_string} #{row_label}\n   #{padding}"
