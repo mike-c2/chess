@@ -27,6 +27,26 @@ class Move
     positions == other.positions
   end
 
+  ##
+  # This does not do any validation on what the move
+  # actually is; any piece can move anywhere on the
+  # board (accept to the same spot).  Trying to move
+  # an empty square is ignored.
+  def move
+    start_square = positions.first
+    end_square = positions.last
+
+    piece = board.remove(start_square)
+    return unless piece
+
+    piece.position = end_square
+    captured_piece = board.place(piece)
+
+    log = "\nThe #{piece} has moved from #{start_square.chess_notation} to #{end_square.chess_notation}"
+    log = "#{log}, and captured the #{captured_piece}" if captured_piece
+    puts "#{log}."
+  end
+
   private_class_method :new
 
   class << self
