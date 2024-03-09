@@ -115,8 +115,15 @@ class BoardLayout
     layout = self.class.setups[setup_key]
 
     layout[:pieces].each do |piece|
-      @piece_maker.created?(**piece)
+      display_warning(**piece) unless @piece_maker.created?(**piece)
     end
+  end
+
+  private
+
+  def display_warning(**args)
+    puts 'WARNING: Failed to create piece:'
+    puts "  #{args}\n\n"
   end
 
   class << self
