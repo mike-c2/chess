@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'pieces/all_colored_pieces'
-require_relative 'positionals/position'
+require_relative '../pieces/all_colored_pieces'
+require_relative '../positionals/position'
 
 ##
 # This class provides an easier way to generate

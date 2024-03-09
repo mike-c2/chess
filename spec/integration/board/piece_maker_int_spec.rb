@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/piece_maker'
-require_relative '../../lib/board'
-require_relative '../../lib/positionals/position'
-require_relative '../../lib/pieces/all_colored_pieces'
+require_relative '../../../lib/board/piece_maker'
+require_relative '../../../lib/board/board'
+require_relative '../../../lib/positionals/position'
+require_relative '../../../lib/pieces/all_colored_pieces'
 
 describe PieceMaker do
   subject(:piece_maker) { described_class.new(board) }

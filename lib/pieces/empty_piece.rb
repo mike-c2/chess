@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../universal_default_board'
+require_relative '../board/universal_default_board'
 require_relative 'colors/color'
 require_relative 'piece_offsets'
 

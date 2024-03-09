@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'position'
-require_relative '../universal_default_board'
+require_relative '../board/universal_default_board'
 
 ##
 # This represents a move in Chess.

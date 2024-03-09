@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'pieces/empty_piece'
+require_relative '../pieces/empty_piece'
 require_relative 'board_display'
 
 ##
