@@ -71,6 +71,14 @@ class Board
     pieces
   end
 
+  def white_pieces
+    all_pieces.select(&:white?)
+  end
+
+  def black_pieces
+    all_pieces.select(&:black?)
+  end
+
   def to_s
     @board_display.pretty_board
   end
