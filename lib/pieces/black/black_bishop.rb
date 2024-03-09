@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../bishop'
-require_relative '../colors/black'
+require_relative '../../colors/black'
 
 ##
 # Represents the Black Bishop in Chess.

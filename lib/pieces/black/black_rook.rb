@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../rook'
-require_relative '../colors/black'
+require_relative '../../colors/black'
 
 ##
 # Represents the Black Rook in Chess.
