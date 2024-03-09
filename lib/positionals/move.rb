@@ -14,17 +14,20 @@ require_relative '../board/universal_default_board'
 #
 # Instantiated objects of this class are immutable.
 class Move
-  attr_reader :positions, :board
+  attr_reader :starting_position, :ending_position, :board
 
   extend UniversalDefaultBoard
 
-  def initialize(positions, board)
-    @positions = positions
+  def initialize(starting_position, ending_position, board)
+    @starting_position = starting_position
+    @ending_position = ending_position
     @board = board
   end
 
+  private_class_method :new
+
   def ==(other)
-    positions == other.positions
+    [starting_position, ending_position] == [other.starting_position, other.ending_position]
   end
 
   ##
@@ -33,29 +36,24 @@ class Move
   # board (accept to the same spot).  Trying to move
   # an empty square is ignored.
   def move
-    start_square = positions.first
-    end_square = positions.last
-
-    piece = board.remove(start_square)
+    piece = board.remove(starting_position)
     return unless piece
 
-    piece.position = end_square
+    piece.position = ending_position
     captured_piece = board.place(piece)
 
-    log = "\nThe #{piece} has moved from #{start_square.chess_notation} to #{end_square.chess_notation}"
+    log = "\nThe #{piece} has moved from #{starting_position.chess_notation} to #{ending_position.chess_notation}"
     log = "#{log}, and captured the #{captured_piece}" if captured_piece
     puts "#{log}."
   end
 
-  private_class_method :new
-
   class << self
-    def create(positions, board = default_board)
-      return nil unless positions in [Position, Position]
+    def create(starting_position, ending_position, board = default_board)
+      return nil unless [starting_position, ending_position] in [Position, Position]
 
-      return nil if positions.first == positions.last
+      return nil if starting_position == ending_position
 
-      new(positions, board)
+      new(starting_position, ending_position, board)
     end
   end
 end
