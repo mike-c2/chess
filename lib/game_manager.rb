@@ -7,6 +7,6 @@ board = Board.new
 chess = Chess.new(board)
 layout = BoardLayout.new(chess)
 
-layout.setup('black_kingside_rook')
+layout.setup('no_pawns')
 
 chess.play_game
