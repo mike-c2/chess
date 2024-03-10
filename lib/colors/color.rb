@@ -37,4 +37,12 @@ module Color
   def white?
     false
   end
+
+  def same_side_pieces
+    []
+  end
+
+  def opponents_side_pieces
+    []
+  end
 end
