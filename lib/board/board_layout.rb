@@ -95,13 +95,28 @@ class BoardLayout
     { color: 'black', type: 'king', location: 'E8' }
   ] }
 
+  @custom = { turn: 'white', pieces: [
+    { color: 'white', type: 'king', location: 'E1' },
+    { color: 'white', type: 'queen', location: 'D1' },
+    { color: 'white', type: 'queen', location: 'F1' },
+    { color: 'white', type: 'pawn', location: 'A5' },
+    { color: 'white', type: 'pawn', location: 'B1' },
+    { color: 'white', type: 'pawn', location: 'B2' },
+    { color: 'black', type: 'pawn', location: 'G7' },
+    { color: 'black', type: 'queen', location: 'C7' },
+    { color: 'black', type: 'queen', location: 'D7' },
+    { color: 'black', type: 'queen', location: 'E7' },
+    { color: 'black', type: 'king', location: 'E8' }
+  ] }
+
   @setups = { standard: @standard,
               no_pawns: @no_pawns,
               kings_only: @kings_only,
               white_queenside_rook: @white_queenside_rook,
               white_kingside_rook: @white_kingside_rook,
               black_queenside_rook: @black_queenside_rook,
-              black_kingside_rook: @black_kingside_rook }
+              black_kingside_rook: @black_kingside_rook,
+              custom: @custom }
 
   def initialize(chess)
     @chess = chess
