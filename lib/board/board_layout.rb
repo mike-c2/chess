@@ -103,16 +103,20 @@ class BoardLayout
               black_queenside_rook: @black_queenside_rook,
               black_kingside_rook: @black_kingside_rook }
 
-  def initialize(board)
-    @board = board
-    @piece_maker = PieceMaker.new(board)
+  def initialize(chess)
+    @chess = chess
+    @board = chess.board
+    @piece_maker = PieceMaker.new(@board)
   end
 
   def setup(board_layout = 'standard')
     setup_key = board_layout.to_sym
+
     return unless self.class.setups.key?(setup_key)
 
     layout = self.class.setups[setup_key]
+
+    @chess.turn(layout[:turn])
 
     layout[:pieces].each do |piece|
       display_warning(**piece) unless @piece_maker.created?(**piece)
