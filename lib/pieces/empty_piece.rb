@@ -11,7 +11,7 @@ require_relative 'piece_offsets'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :position
-  attr_reader :board, :move_count, :piece_type, :offsets
+  attr_reader :move_count, :piece_type, :offsets
 
   extend UniversalDefaultBoard
   include Color
@@ -58,7 +58,7 @@ class EmptyPiece
     potential_move = Move.create(position, next_position)
     return unless potential_move
 
-    piece = board.get(next_position)
+    piece = @board.get(next_position)
 
     potential_move if piece.nil? || opponents_side?(piece)
   end
