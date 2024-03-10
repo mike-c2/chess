@@ -15,7 +15,7 @@ module GameInfo
 
       This is can only be played in 2-player mode, there is no AI.
 
-      Enter the move you want to make using the following Chess notation.
+      Enter the move you want to make using Chess notation.
       For example, if you want to move the pawn on E2 up to E4, enter the
       following notation (input is case insensitive):
 
