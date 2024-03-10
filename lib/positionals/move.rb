@@ -39,6 +39,7 @@ class Move
     piece = board.remove(starting_position)
     return unless piece
 
+    piece.increment_move_count
     piece.position = ending_position
     captured_piece = board.place(piece)
 
