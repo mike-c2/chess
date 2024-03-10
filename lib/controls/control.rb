@@ -14,7 +14,20 @@ class Control
     @board = board
   end
 
-  def play; end
+  def play
+    possible_moves = all_possible_moves
+
+    loop do
+      move_choice = player_move
+
+      if possible_moves.include?(move_choice)
+        move_choice.move
+        break
+      end
+
+      puts 'Your move is not possible, try again.'
+    end
+  end
 
   private
 
@@ -32,5 +45,17 @@ class Control
 
       puts 'Move entered is not valid, try again.  An example of a valid move: E2 E4'
     end
+  end
+
+  def all_possible_moves
+    pieces = same_side_pieces
+    possible_moves = []
+
+    pieces.each do |piece|
+      piece_moves = piece.generate_possible_moves
+      possible_moves.concat(piece_moves)
+    end
+
+    possible_moves
   end
 end
