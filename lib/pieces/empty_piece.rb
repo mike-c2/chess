@@ -52,4 +52,14 @@ class EmptyPiece
   private
 
   attr_writer :piece_type
+
+  def generate_potential_move(offset)
+    next_position = position.add_offset(offset)
+    potential_move = Move.create(position, next_position)
+    return unless potential_move
+
+    piece = board.get(next_position)
+
+    potential_move if piece.nil? || opponents_side?(piece)
+  end
 end
