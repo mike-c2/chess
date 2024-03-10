@@ -30,4 +30,12 @@ module Black
   def white?
     false
   end
+
+  def same_side_pieces
+    @board.black_pieces
+  end
+
+  def opponents_side_pieces
+    @board.white_pieces
+  end
 end
