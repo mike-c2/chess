@@ -20,10 +20,10 @@ class Control
     loop do
       move_choice = player_move
 
-      if possible_moves.include?(move_choice)
-        possible_moves.find { |move| move == move_choice }.move
-        break
-      end
+      next_move = possible_moves.find { |move| move == move_choice }
+
+      next_move&.move
+      break if next_move
 
       puts 'Your move is not possible, try again.'
     end
