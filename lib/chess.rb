@@ -2,7 +2,6 @@
 
 require_relative 'controls/black_control'
 require_relative 'controls/white_control'
-require_relative 'board/board_layout'
 require_relative 'game_info'
 
 ##
