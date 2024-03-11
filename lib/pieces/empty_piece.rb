@@ -37,6 +37,14 @@ class EmptyPiece
     false
   end
 
+  # This will be used by pawn
+  def promote; end
+
+  # Same as promote, but just promotes to 'queen'
+  # without asking.
+  # This is meant for the AI playing the game.
+  def no_prompt_promote; end
+
   # How the piece actually looks on the board
   # that is printed to the terminal
   def piece_str
