@@ -34,7 +34,7 @@ class Move
   # This does not do any validation on what the move
   # actually is; any piece can move anywhere on the
   # board (accept to the same spot).  Trying to move
-  # an empty square is ignored.
+  # to an empty square is ignored.
   def move
     piece = @board.remove(starting_position)
     return unless piece
@@ -46,6 +46,25 @@ class Move
     log = "\nThe #{piece} has moved from #{starting_position.chess_notation} to #{ending_position.chess_notation}"
     log = "#{log}, and captured the #{captured_piece}" if captured_piece
     puts "#{log}."
+  end
+
+  # This performs the actual move on the board,
+  # check to see if it results in the side making
+  # the move being in check, then undoes the move
+  # on the board.
+  def move_own_check?
+    moving_piece = @board.remove(starting_position)
+    moving_piece.position = ending_position
+    captured_piece = @board.place(moving_piece)
+
+    check = moving_piece.in_check?
+
+    moving_piece.position = starting_position
+    @board.place(moving_piece)
+
+    captured_piece ? @board.place(captured_piece) : @board.remove(ending_position)
+
+    check
   end
 
   class << self
