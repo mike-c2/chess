@@ -22,11 +22,34 @@ class Chess
     GameInfo.display
 
     loop do
-      board.display
-      active_control.play
-      puts 'Check!' if active_control.opponent_in_check?
-      next_turn
+      break unless move_made?
     end
+
+    end_game
+  end
+
+  def end_game
+    no_white_moves = white_control.valid_moves.empty?
+    no_black_moves = black_control.valid_moves.empty?
+    white_in_check = white_control.in_check?
+    black_in_check = black_control.in_check?
+
+    if no_white_moves && white_in_check then puts 'Checkmate! Black won the game'
+    elsif no_black_moves && black_in_check then puts 'Checkmate! White won the game'
+    elsif no_white_moves || no_black_moves then puts 'The game ended in a stalemate'
+    end
+  end
+
+  def move_made?
+    board.display
+    move_made = active_control.play?
+    puts 'Check!' if active_control.opponent_in_check?
+
+    return false unless move_made
+
+    next_turn
+
+    true
   end
 
   def blacks_turn
