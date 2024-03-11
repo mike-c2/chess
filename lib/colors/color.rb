@@ -45,4 +45,29 @@ module Color
   def opponents_side_pieces
     []
   end
+
+  def all_possible_moves
+    pieces = same_side_pieces
+
+    all_possible_moves_helper(pieces)
+  end
+
+  def all_possible_opponent_moves
+    pieces = opponents_side_pieces
+
+    all_possible_moves_helper(pieces)
+  end
+
+  private
+
+  def all_possible_moves_helper(pieces)
+    possible_moves = []
+
+    pieces.each do |piece|
+      piece_moves = piece.generate_possible_moves
+      possible_moves.concat(piece_moves)
+    end
+
+    possible_moves
+  end
 end
