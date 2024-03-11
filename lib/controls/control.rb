@@ -49,18 +49,6 @@ class Control
     end
   end
 
-  def all_possible_moves
-    pieces = same_side_pieces
-    possible_moves = []
-
-    pieces.each do |piece|
-      piece_moves = piece.generate_possible_moves
-      possible_moves.concat(piece_moves)
-    end
-
-    possible_moves
-  end
-
   def promote_eligible_pieces
     same_side_pieces.each(&:promote)
   end
