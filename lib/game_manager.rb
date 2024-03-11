@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'board/board'
+require_relative 'board/board_layout'
 require_relative 'chess'
 
 board = Board.new
