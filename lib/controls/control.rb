@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../board/board'
 require_relative '../colors/color'
-require_relative '../positionals/move'
 
 ##
 # Manages a player's turn
