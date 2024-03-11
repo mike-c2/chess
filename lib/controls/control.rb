@@ -27,6 +27,8 @@ class Control
 
       puts 'Your move is not possible, try again.'
     end
+
+    promote_eligible_pieces
   end
 
   private
@@ -57,5 +59,9 @@ class Control
     end
 
     possible_moves
+  end
+
+  def promote_eligible_pieces
+    same_side_pieces.each(&:promote)
   end
 end
