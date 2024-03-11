@@ -21,6 +21,9 @@ class Control
     loop do
       move_choice = player_move
 
+      # Player has chosen to go back to the menu
+      return false unless move_choice
+
       next_move = possible_moves.find { |move| move == move_choice }
 
       next_move&.move
@@ -44,16 +47,23 @@ class Control
     puts "It is now #{color.capitalize}'s turn, make a move:"
 
     loop do
-      first, second = gets.chomp.strip.split
-      first_position = Position.create_with_chess_notation(first)
-      second_position = Position.create_with_chess_notation(second)
+      player_input = gets.chomp.strip
+      return nil if player_input.downcase == 'menu'
 
-      move = Move.create(first_position, second_position, @board)
+      move = process_player_input(player_input)
 
       return move if move
 
       puts 'Move entered is not valid, try again.  An example of a valid move: E2 E4'
     end
+  end
+
+  def process_player_input(player_input)
+    first, second = player_input.split
+    first_position = Position.create_with_chess_notation(first)
+    second_position = Position.create_with_chess_notation(second)
+
+    Move.create(first_position, second_position, @board)
   end
 
   def promote_eligible_pieces
