@@ -14,7 +14,7 @@ require_relative '../board/universal_default_board'
 #
 # Instantiated objects of this class are immutable.
 class Move
-  attr_reader :starting_position, :ending_position, :board
+  attr_reader :starting_position, :ending_position
 
   extend UniversalDefaultBoard
 
@@ -36,12 +36,12 @@ class Move
   # board (accept to the same spot).  Trying to move
   # an empty square is ignored.
   def move
-    piece = board.remove(starting_position)
+    piece = @board.remove(starting_position)
     return unless piece
 
     piece.increment_move_count
     piece.position = ending_position
-    captured_piece = board.place(piece)
+    captured_piece = @board.place(piece)
 
     log = "\nThe #{piece} has moved from #{starting_position.chess_notation} to #{ending_position.chess_notation}"
     log = "#{log}, and captured the #{captured_piece}" if captured_piece
