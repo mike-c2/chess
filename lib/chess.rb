@@ -24,6 +24,7 @@ class Chess
     loop do
       board.display
       active_control.play
+      puts 'Check!' if active_control.opponent_in_check?
       next_turn
     end
   end
