@@ -48,7 +48,7 @@ class Pawn < EmptyPiece
 
       next unless @board.get(next_position)
 
-      next_move = Move.create(position, next_position)
+      next_move = Move.create(position, next_position, @board)
       possible_moves << next_move if next_move
     end
 
@@ -78,7 +78,7 @@ class Pawn < EmptyPiece
 
     return if @board.get(next_position)
 
-    Move.create(position, next_position)
+    Move.create(position, next_position, @board)
   end
 
   def process_promotion(type)
