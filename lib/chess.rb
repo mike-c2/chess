@@ -8,7 +8,8 @@ require_relative 'game_info'
 ##
 # Runs the chess game
 class Chess
-  attr_reader :board, :white_control, :black_control, :active_control
+  attr_accessor :white_control, :black_control
+  attr_reader :board, :active_control
 
   def initialize(board)
     @board = board
