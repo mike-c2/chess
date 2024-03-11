@@ -15,7 +15,7 @@ class Control
   end
 
   def play
-    possible_moves = all_possible_moves
+    possible_moves = all_possible_moves.reject { |move| move_own_check?(move) }
 
     loop do
       move_choice = player_move
@@ -51,5 +51,27 @@ class Control
 
   def promote_eligible_pieces
     same_side_pieces.each(&:promote)
+  end
+
+  # This performs the actual move on the board,
+  # check to see if it results in the side making
+  # the move being in check, then undoes the move
+  # on the board.
+  def move_own_check?(move)
+    starting_position = move.starting_position
+    ending_position = move.ending_position
+
+    moving_piece = @board.remove(starting_position)
+    moving_piece.position = ending_position
+    captured_piece = @board.place(moving_piece)
+
+    check = in_check?
+
+    moving_piece.position = starting_position
+    @board.place(moving_piece)
+
+    captured_piece ? @board.place(captured_piece) : @board.remove(ending_position)
+
+    check
   end
 end
