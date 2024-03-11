@@ -14,8 +14,9 @@ class Control
     @board = board
   end
 
-  def play
-    possible_moves = all_possible_moves.reject(&:move_own_check?)
+  def play?
+    possible_moves = valid_moves
+    return false if possible_moves.empty?
 
     loop do
       move_choice = player_move
@@ -29,6 +30,12 @@ class Control
     end
 
     promote_eligible_pieces
+
+    true
+  end
+
+  def valid_moves
+    all_possible_moves.reject(&:move_own_check?)
   end
 
   private
