@@ -46,6 +46,14 @@ module Color
     []
   end
 
+  def in_check?
+    in_check_helper?(all_possible_opponent_moves)
+  end
+
+  def opponent_in_check?
+    in_check_helper?(all_possible_moves)
+  end
+
   def all_possible_moves
     pieces = same_side_pieces
 
@@ -69,5 +77,17 @@ module Color
     end
 
     possible_moves
+  end
+
+  def in_check_helper?(moves)
+    positions = moves.map(&:ending_position)
+
+    positions.any? do |position|
+      piece = @board.get(position)
+
+      next unless piece
+
+      piece.piece_type == 'king'
+    end
   end
 end
