@@ -8,7 +8,7 @@ require_relative '../../colors/white'
 class WhitePawn < Pawn
   include White
 
-  def initialize(position = nil, board = self.class.default_board)
+  def initialize(position = nil, board = self.class.default_board, move_count = 0, passant_vulnerable: false)
     super
     @single_move_offset = [1, 0]
     @double_move_offset = [2, 0]
