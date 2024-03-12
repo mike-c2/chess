@@ -34,7 +34,7 @@ class Move
   # This does not do any validation on what the move
   # actually is; any piece can move anywhere on the
   # board (accept to the same spot).  Trying to move
-  # to an empty square is ignored.
+  # an empty square is ignored.
   def move
     piece = @board.remove(starting_position)
     return unless piece
