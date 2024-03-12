@@ -31,6 +31,8 @@ module GameInfo
       For pawn promotions, you will be prompted to select what the new
       piece will be.
 
+      You can also enter 'menu' to go back to the Main Menu.
+
     INFO
   end
 end
