@@ -9,6 +9,8 @@ require_relative '../board/piece_maker'
 # This is an abstract class, with
 # no color.
 class Pawn < EmptyPiece
+  attr_reader :passant_vulnerable
+
   def initialize(position = nil, board = self.class.default_board, move_count = 0, passant_vulnerable: false)
     super(position, board, move_count)
     self.piece_type = 'pawn'
