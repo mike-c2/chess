@@ -60,6 +60,16 @@ class EmptyPiece
     "#{color} #{piece_type}".strip
   end
 
+  # Symbols are not used here because this is meant
+  # more for serialization and JSON cannot handle
+  # symbols.
+  def to_h
+    { 'color' => color,
+      'piece_type' => piece_type,
+      'position' => position.chess_notation,
+      'move_count' => move_count }
+  end
+
   private
 
   attr_writer :piece_type
