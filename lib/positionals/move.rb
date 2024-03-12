@@ -18,10 +18,11 @@ class Move
 
   extend UniversalDefaultBoard
 
-  def initialize(starting_position, ending_position, board)
+  def initialize(starting_position, ending_position, board, pre_passant_move: false)
     @starting_position = starting_position
     @ending_position = ending_position
     @board = board
+    @pre_passant_move = pre_passant_move
   end
 
   private_class_method :new
@@ -38,6 +39,8 @@ class Move
   def move
     piece = @board.remove(starting_position)
     return unless piece
+
+    piece.enable_passant_vulnerable if @pre_passant_move
 
     piece.increment_move_count
     piece.position = ending_position
@@ -68,12 +71,12 @@ class Move
   end
 
   class << self
-    def create(starting_position, ending_position, board = default_board)
+    def create(starting_position, ending_position, board = default_board, pre_passant_move: false)
       return nil unless [starting_position, ending_position] in [Position, Position]
 
       return nil if starting_position == ending_position
 
-      new(starting_position, ending_position, board)
+      new(starting_position, ending_position, board, pre_passant_move: pre_passant_move)
     end
   end
 end
