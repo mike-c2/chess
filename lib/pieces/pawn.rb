@@ -48,6 +48,10 @@ class Pawn < EmptyPiece
     @passant_vulnerable = false
   end
 
+  def to_h
+    super.to_h.merge({ 'passant_vulnerable' => passant_vulnerable })
+  end
+
   private
 
   def kill_moves
