@@ -87,20 +87,20 @@ class Pawn < EmptyPiece
     # Double move can only happen on pawn's first move
     # Pawn must be in the correct starting row.
     if possible_moves.length.positive? && move_count.zero? && position.array_notation.first == @double_move_row
-      double_move = no_kill_move(@double_move_offset)
+      double_move = no_kill_move(@double_move_offset, pre_passant_move: true)
       possible_moves << double_move if double_move
     end
 
     possible_moves
   end
 
-  def no_kill_move(offset)
+  def no_kill_move(offset, pre_passant_move: false)
     next_position = position.add_offset(offset)
     return unless next_position
 
     return if @board.get(next_position)
 
-    Move.create(position, next_position, @board)
+    Move.create(position, next_position, @board, pre_passant_move: pre_passant_move)
   end
 
   def process_promotion(type)
