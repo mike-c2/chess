@@ -13,7 +13,7 @@ class ComputerControl < Control
 
     possible_moves.sample.move
 
-    promote_eligible_pieces
+    pawn_clean_up
 
     true
   end

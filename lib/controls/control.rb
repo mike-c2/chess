@@ -30,7 +30,7 @@ class Control
       puts 'Your move is not possible, try again.'
     end
 
-    promote_eligible_pieces
+    pawn_clean_up
 
     true
   end
@@ -64,7 +64,7 @@ class Control
     Move.create(first_position, second_position, @board)
   end
 
-  def promote_eligible_pieces
+  def pawn_clean_up
     same_side_pieces.each(&:promote)
   end
 end
