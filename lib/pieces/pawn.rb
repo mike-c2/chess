@@ -43,16 +43,23 @@ class Pawn < EmptyPiece
     possible_moves = []
 
     @kill_offsets.each do |offset|
-      next_position = position.add_offset(offset)
-      next unless next_position
-
-      next unless @board.get(next_position)
-
-      next_move = Move.create(position, next_position, @board)
+      next_move = kill_move(offset)
       possible_moves << next_move if next_move
     end
 
     possible_moves
+  end
+
+  def kill_move(offset)
+    next_position = position.add_offset(offset)
+    return nil unless next_position
+
+    targeted_piece = @board.get(next_position)
+    return nil unless targeted_piece
+
+    return nil unless opponents_side?(targeted_piece)
+
+    Move.create(position, next_position, @board)
   end
 
   def no_kill_moves
