@@ -9,14 +9,15 @@ require_relative '../board/piece_maker'
 # This is an abstract class, with
 # no color.
 class Pawn < EmptyPiece
-  def initialize(position = nil, board = self.class.default_board)
-    super
+  def initialize(position = nil, board = self.class.default_board, move_count = 0, passant_vulnerable: false)
+    super(position, board, move_count)
     self.piece_type = 'pawn'
     @single_move_offset = []
     @double_move_offset = []
     @kill_offsets = []
     @double_move_row = -1
     @promotion_row = -1
+    @passant_vulnerable = passant_vulnerable
     @piece_maker = PieceMaker.new(@board)
   end
 
@@ -35,6 +36,14 @@ class Pawn < EmptyPiece
     return unless position.array_notation.first == @promotion_row
 
     process_promotion('queen')
+  end
+
+  def enable_passant_vulnerable
+    @passant_vulnerable = true
+  end
+
+  def disable_passant_vulnerable
+    @passant_vulnerable = false
   end
 
   private
