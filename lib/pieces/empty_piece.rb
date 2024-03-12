@@ -45,6 +45,9 @@ class EmptyPiece
   # This is meant for the AI playing the game.
   def no_prompt_promote; end
 
+  # This will be used by pawns
+  def disable_passant_vulnerable; end
+
   # How the piece actually looks on the board
   # that is printed to the terminal
   def piece_str
