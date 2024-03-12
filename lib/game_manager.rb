@@ -40,11 +40,6 @@ class GameManager
     @board = Board.new
     @chess = Chess.new(@board)
     @board_layout = BoardLayout.new(@chess)
-
-    @human_white = @chess.white_control
-    @human_black = @chess.black_control
-    @computer_white = ComputerWhiteControl.new(@board)
-    @computer_black = ComputerBlackControl.new(@board)
   end
 
   def start
@@ -74,21 +69,12 @@ class GameManager
 
   def game_mode_selection(selection)
     case selection
-    when 'P' then game_mode(@human_white, @human_black)
-    when 'W' then game_mode(@human_white, @computer_black)
-    when 'B' then game_mode(@computer_white, @human_black)
+    when 'P' then @chess.human_vs_human
+    when 'W' then @chess.human_vs_computer_black
+    when 'B' then @chess.human_vs_computer_white
     end
 
     @chess.play_game
-  end
-
-  def game_mode(white_control, black_control)
-    @chess.white_control = white_control
-    @chess.black_control = black_control
-
-    # Double next_turn will fix a stale active_control
-    @chess.next_turn
-    @chess.next_turn
   end
 
   def reset
