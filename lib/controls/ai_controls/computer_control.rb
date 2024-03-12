@@ -17,4 +17,8 @@ class ComputerControl < Control
 
     true
   end
+
+  def pawn_clean_up
+    same_side_pieces.each(&:no_prompt_promote)
+  end
 end
