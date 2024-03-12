@@ -66,5 +66,12 @@ class Control
 
   def pawn_clean_up
     same_side_pieces.each(&:promote)
+    clear_en_passants
+  end
+
+  # En Passant must happen on the very next turn,
+  # or the option is forfeited
+  def clear_en_passants
+    opponents_side_pieces.each(&:disable_passant_vulnerable)
   end
 end
