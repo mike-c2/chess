@@ -16,10 +16,10 @@ class EnPassantMove < Move
   private_class_method :new
 
   def move
-    super.move
+    super
 
     captured_piece = @board.remove(@capture_position)
-    puts "The #{captured_piece} was captured En Passant."
+    puts "The #{captured_piece} on #{@capture_position.chess_notation} was captured En Passant."
   end
 
   def move_own_check?
@@ -30,6 +30,7 @@ class EnPassantMove < Move
 
     check = moving_piece.in_check?
 
+    @board.remove(ending_position)
     moving_piece.position = starting_position
     @board.place(moving_piece)
     @board.place(captured_piece)
