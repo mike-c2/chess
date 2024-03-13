@@ -17,17 +17,17 @@ class PieceMaker
   # Example: created?(color: 'white', type: 'king', location: 'E1')
   #
   # Returns true if the action was successful, false otherwise
-  def created?(color:, type:, location:)
-    color = color.chomp.strip.downcase
-    type = type.chomp.strip.downcase
-
+  def created?(color:, type:, location:, move_count: 0, passant_vulnerable: false)
     return false unless %w[white black].include?(color)
 
     position = Position.create_with_chess_notation(location)
 
     return false unless position
 
-    piece = color == 'white' ? create_white(type, position) : create_black(type, position)
+    args = { type: type, position: position, move_count: move_count,
+             passant_vulnerable: passant_vulnerable }
+
+    piece = color == 'white' ? create_white(**args) : create_black(**args)
 
     return false unless piece
 
@@ -38,25 +38,25 @@ class PieceMaker
 
   private
 
-  def create_white(type, position)
+  def create_white(type:, position:, move_count:, passant_vulnerable:)
     case type
-    when 'king' then WhiteKing.new(position, @board)
-    when 'queen' then WhiteQueen.new(position, @board)
-    when 'bishop' then WhiteBishop.new(position, @board)
-    when 'knight' then WhiteKnight.new(position, @board)
-    when 'rook' then WhiteRook.new(position, @board)
-    when 'pawn' then WhitePawn.new(position, @board)
+    when 'king' then WhiteKing.new(position, @board, move_count)
+    when 'queen' then WhiteQueen.new(position, @board, move_count)
+    when 'bishop' then WhiteBishop.new(position, @board, move_count)
+    when 'knight' then WhiteKnight.new(position, @board, move_count)
+    when 'rook' then WhiteRook.new(position, @board, move_count)
+    when 'pawn' then WhitePawn.new(position, @board, move_count, passant_vulnerable: passant_vulnerable)
     end
   end
 
-  def create_black(type, position)
+  def create_black(type:, position:, move_count:, passant_vulnerable:)
     case type
-    when 'king' then BlackKing.new(position, @board)
-    when 'queen' then BlackQueen.new(position, @board)
-    when 'bishop' then BlackBishop.new(position, @board)
-    when 'knight' then BlackKnight.new(position, @board)
-    when 'rook' then BlackRook.new(position, @board)
-    when 'pawn' then BlackPawn.new(position, @board)
+    when 'king' then BlackKing.new(position, @board, move_count)
+    when 'queen' then BlackQueen.new(position, @board, move_count)
+    when 'bishop' then BlackBishop.new(position, @board, move_count)
+    when 'knight' then BlackKnight.new(position, @board, move_count)
+    when 'rook' then BlackRook.new(position, @board, move_count)
+    when 'pawn' then BlackPawn.new(position, @board, move_count, passant_vulnerable: passant_vulnerable)
     end
   end
 end
