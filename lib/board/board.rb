@@ -82,4 +82,8 @@ class Board
   def to_s
     @board_display.pretty_board
   end
+
+  def to_h
+    all_pieces.map(&:to_h)
+  end
 end
