@@ -4,8 +4,6 @@ require_relative 'board/board'
 require_relative 'board/board_layout'
 require_relative 'file_management/file_saver'
 require_relative 'file_management/file_loader'
-require_relative 'controls/ai_controls/computer_black_control'
-require_relative 'controls/ai_controls/computer_white_control'
 require_relative 'chess'
 
 ##
