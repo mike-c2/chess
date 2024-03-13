@@ -47,7 +47,7 @@ class Pawn < EmptyPiece
   end
 
   def to_h
-    super.to_h.merge({ 'passant_vulnerable' => passant_vulnerable })
+    super.merge({ 'passant_vulnerable' => passant_vulnerable })
   end
 
   private
