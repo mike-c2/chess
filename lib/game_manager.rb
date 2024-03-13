@@ -2,6 +2,8 @@
 
 require_relative 'board/board'
 require_relative 'board/board_layout'
+require_relative 'file_management/file_saver'
+require_relative 'file_management/file_loader'
 require_relative 'controls/ai_controls/computer_black_control'
 require_relative 'controls/ai_controls/computer_white_control'
 require_relative 'chess'
@@ -40,6 +42,8 @@ class GameManager
     @board = Board.new
     @chess = Chess.new(@board)
     @board_layout = BoardLayout.new(@chess)
+    @file_saver = FileSaver.new(@chess)
+    @file_loader = FileLoader.new(@chess)
   end
 
   def start
@@ -48,9 +52,8 @@ class GameManager
     selection = ''
 
     loop do
-      # displaying the full menu after making minor
-      # selections is a little annoying
-      display_menu unless %w[R S L].include?(selection)
+      # displaying the full menu after reset is a little annoying
+      display_menu unless selection == 'R'
 
       selection = player_input
 
@@ -85,8 +88,8 @@ class GameManager
   end
 
   def game_file_selection(selection)
-    puts "\nSaving the game has not yet been implemented\n\n" if selection == 'S'
-    puts "\nLoading the game has not yet been implemented\n\n" if selection == 'L'
+    @file_saver.save_game if selection == 'S'
+    @file_loader.load_game if selection == 'L'
   end
 
   def player_input
