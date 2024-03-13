@@ -2,6 +2,7 @@
 
 require_relative 'board/board'
 require_relative 'board/board_layout'
+require_relative 'positionals/move'
 require_relative 'file_management/file_saver'
 require_relative 'file_management/file_loader'
 require_relative 'chess'
@@ -42,6 +43,8 @@ class GameManager
     @board_layout = BoardLayout.new(@chess)
     @file_saver = FileSaver.new(@chess)
     @file_loader = FileLoader.new(@chess)
+
+    Move.default_board = @board
   end
 
   def start
