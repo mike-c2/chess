@@ -47,8 +47,12 @@ class Pawn < EmptyPiece
     @passant_vulnerable = false
   end
 
+  def passant_vulnerable?
+    @passant_vulnerable
+  end
+
   def to_h
-    super.merge({ 'passant_vulnerable' => passant_vulnerable })
+    super.merge({ 'passant_vulnerable' => @passant_vulnerable })
   end
 
   private
@@ -90,7 +94,7 @@ class Pawn < EmptyPiece
     targeted_piece = @board.get(target_position)
     return nil unless targeted_piece
 
-    return nil unless opponents_side?(targeted_piece) && targeted_piece.passant_vulnerable
+    return nil unless opponents_side?(targeted_piece) && targeted_piece.passant_vulnerable?
 
     EnPassantMove.create(position, next_position, target_position, @board)
   end
