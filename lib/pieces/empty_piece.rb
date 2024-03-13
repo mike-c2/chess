@@ -11,7 +11,7 @@ require_relative 'piece_offsets'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :position
-  attr_reader :move_count, :piece_type, :offsets
+  attr_reader :move_count, :piece_type, :offsets, :passant_vulnerable
 
   extend UniversalDefaultBoard
   include Color
@@ -22,6 +22,7 @@ class EmptyPiece
     @position = position
     @move_count = move_count
     @offsets = []
+    @passant_vulnerable = false
   end
 
   def increment_move_count
