@@ -11,7 +11,7 @@ require_relative 'piece_offsets'
 # to represent an empty space on the board.
 class EmptyPiece
   attr_accessor :position
-  attr_reader :move_count, :piece_type, :offsets, :passant_vulnerable
+  attr_reader :move_count, :piece_type, :offsets
 
   extend UniversalDefaultBoard
   include Color
@@ -22,7 +22,6 @@ class EmptyPiece
     @position = position
     @move_count = move_count
     @offsets = []
-    @passant_vulnerable = false
   end
 
   def increment_move_count
@@ -42,6 +41,10 @@ class EmptyPiece
   def promote; end
   def enable_passant_vulnerable; end
   def disable_passant_vulnerable; end
+
+  def passant_vulnerable?
+    false
+  end
 
   # Same as promote, but just promotes to 'queen'
   # without asking.
