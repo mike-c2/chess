@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'json'
+
 require_relative 'controls/black_control'
 require_relative 'controls/white_control'
 require_relative 'controls/ai_controls/computer_black_control'
@@ -92,6 +94,13 @@ class Chess
 
   def human_vs_computer_black
     game_mode(@human_white, @computer_black)
+  end
+
+  def to_json(*_args)
+    pieces = board.to_h
+
+    { 'turn' => @active_control.color,
+      'pieces' => pieces }.to_json
   end
 
   private
