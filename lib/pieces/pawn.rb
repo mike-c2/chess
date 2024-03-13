@@ -2,6 +2,7 @@
 
 require_relative 'empty_piece'
 require_relative '../positionals/move'
+require_relative '../positionals/en_passant_move'
 require_relative '../board/piece_maker'
 
 ##
@@ -58,6 +59,9 @@ class Pawn < EmptyPiece
     @kill_offsets.each do |offset|
       next_move = kill_move(offset)
       possible_moves << next_move if next_move
+
+      en_passant_move = en_passant_kill_move(offset)
+      possible_moves << en_passant_move if en_passant_move
     end
 
     possible_moves
@@ -73,6 +77,22 @@ class Pawn < EmptyPiece
     return nil unless opponents_side?(targeted_piece)
 
     Move.create(position, next_position, @board)
+  end
+
+  def en_passant_kill_move(offset)
+    next_position = position.add_offset(offset)
+    return nil unless next_position
+
+    return nil if @board.get(next_position)
+
+    target_offset = [0, offset.last]
+    target_position = position.add_offset(target_offset)
+    targeted_piece = @board.get(target_position)
+    return nil unless targeted_piece
+
+    return nil unless opponents_side?(targeted_piece) && targeted_piece.passant_vulnerable
+
+    EnPassantMove.create(position, next_position, target_position, @board)
   end
 
   def no_kill_moves
