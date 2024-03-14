@@ -87,7 +87,7 @@ module Color
 
       next unless piece
 
-      piece.piece_type == 'king'
+      piece.is_a?(King)
     end
   end
 end
