@@ -108,7 +108,3 @@ class GameManager
     puts MENU
   end
 end
-
-manager = GameManager.new
-
-manager.start
