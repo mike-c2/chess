@@ -8,6 +8,11 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - "lib/game_info.rb"
+    - "lib/controls/control.rb"
+Metrics/ClassLength:
+  Exclude:
+    - "lib/board/board_layout.rb"
+    - "lib/pieces/pawn.rb"
 Style/ClassVars:
   Exclude:
     - "lib/board/universal_default_board.rb"
