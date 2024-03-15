@@ -30,10 +30,10 @@ class GameManager
     Input is not case sensitive and only the first letter of
     what you enter matters.
 
-    The first 3 options will use the same board, reset he game
+    The first 3 options will use the same board, reset the game
     first if you want to start fresh.
 
-    Q and E do the samething
+    Q and E do the same thing
 
   MENU
 
