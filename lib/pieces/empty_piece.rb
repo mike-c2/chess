@@ -33,6 +33,10 @@ class EmptyPiece
     []
   end
 
+  def generate_castling_moves
+    []
+  end
+
   def check?
     false
   end
