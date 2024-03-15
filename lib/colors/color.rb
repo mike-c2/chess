@@ -57,13 +57,28 @@ module Color
   def all_possible_moves
     pieces = same_side_pieces
 
-    all_possible_moves_helper(pieces)
+    all_possible_moves_helper(pieces) + all_castling_moves
   end
 
+  # This does not include castling moves.
+  # This is needed for the check test and
+  # being able to castle will never
+  # threaten the King.
   def all_possible_opponent_moves
     pieces = opponents_side_pieces
 
     all_possible_moves_helper(pieces)
+  end
+
+  def all_castling_moves
+    possible_moves = []
+
+    same_side_pieces.each do |piece|
+      piece_moves = piece.generate_castling_moves
+      possible_moves.concat(piece_moves)
+    end
+
+    possible_moves
   end
 
   private
